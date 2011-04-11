@@ -1,3 +1,5 @@
+# TODO
+# - compress .js/.css
 %define		status		stable
 %define		pearname	Horde_Mime_Viewer
 %include	/usr/lib/rpm/macros.php
@@ -5,7 +7,7 @@ Summary:	%{pearname} - Horde MIME Viewer Library
 Name:		php-horde-Horde_Mime_Viewer
 Version:	1.0.0
 Release:	1
-License:	LGPL
+License:	LGPL (PHP code), MIT and GPL (syntaxhighlighter)
 Group:		Development/Languages/PHP
 Source0:	http://pear.horde.org/get/%{pearname}-%{version}.tgz
 # Source0-md5:	ef9a0b5db98c8438306f148dc273cabe
@@ -29,6 +31,8 @@ Requires:	php-xml
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		hordedir	/usr/share/horde
+
 %description
 Provides rendering drivers for MIME data.
 
@@ -37,13 +41,24 @@ In PEAR status of this package is: %{status}.
 %prep
 %pear_package_setup
 
+mv ./%{php_pear_dir}/www/horde .
+
+# common licenses
+%{__rm} horde/js/syntaxhighlighter/LGPL-LICENSE
+%{__rm} horde/js/syntaxhighlighter/MIT-LICENSE
+
+# sources not needed runtime
+%{__rm} -r horde/js/syntaxhighlighter/src
+
 %build
 packagexml2cl package.xml > ChangeLog
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}
+install -d $RPM_BUILD_ROOT{%{php_pear_dir},%{hordedir}}
 %pear_package_install
+
+cp -a horde/* $RPM_BUILD_ROOT%{hordedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -56,8 +71,8 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Horde/Mime/Viewer.php
 %{php_pear_dir}/data/Horde_Mime_Viewer
 
-# TODO
-%dir %{php_pear_dir}/www
-%dir %{php_pear_dir}/www/horde
-%dir %{php_pear_dir}/www/horde/js
-%{php_pear_dir}/www/horde/js/syntaxhighlighter
+%dir %{hordedir}/js/syntaxhighlighter
+%dir %{hordedir}/js/syntaxhighlighter/scripts
+%{hordedir}/js/syntaxhighlighter/scripts/*.js
+%dir %{hordedir}/js/syntaxhighlighter/styles
+%{hordedir}/js/syntaxhighlighter/styles/*.css
