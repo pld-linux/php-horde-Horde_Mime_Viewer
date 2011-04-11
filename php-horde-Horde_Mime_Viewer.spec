@@ -26,7 +26,7 @@ Requires:	php-horde-Horde_Text_Filter < 2.0.0
 Requires:	php-horde-Horde_Text_Flowed < 2.0.0
 Requires:	php-horde-Horde_Translation < 2.0.0
 Requires:	php-horde-Horde_Util < 2.0.0
-Requires:	php-pear
+Requires:	php-pear >= 4:1.3.6-2
 Requires:	php-xml
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
