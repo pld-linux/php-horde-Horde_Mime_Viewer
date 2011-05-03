@@ -6,13 +6,14 @@
 Summary:	%{pearname} - Horde MIME Viewer Library
 Name:		php-horde-Horde_Mime_Viewer
 Version:	1.0.0
-Release:	1
+Release:	2
 License:	LGPL (PHP code), MIT and GPL (syntaxhighlighter)
 Group:		Development/Languages/PHP
 Source0:	http://pear.horde.org/get/%{pearname}-%{version}.tgz
 # Source0-md5:	ef9a0b5db98c8438306f148dc273cabe
 URL:		https://github.com/horde/horde/tree/master/framework/Mime_Viewer/
 BuildRequires:	php-channel(pear.horde.org)
+BuildRequires:	php-horde-Horde_Role
 BuildRequires:	php-packagexml2cl
 BuildRequires:	php-pear-PEAR >= 1:1.7.0
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
