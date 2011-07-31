@@ -5,12 +5,12 @@
 %include	/usr/lib/rpm/macros.php
 Summary:	%{pearname} - Horde MIME Viewer Library
 Name:		php-horde-Horde_Mime_Viewer
-Version:	1.0.0
-Release:	2
+Version:	1.0.2
+Release:	1
 License:	LGPL (PHP code), MIT and GPL (syntaxhighlighter)
 Group:		Development/Languages/PHP
 Source0:	http://pear.horde.org/get/%{pearname}-%{version}.tgz
-# Source0-md5:	ef9a0b5db98c8438306f148dc273cabe
+# Source0-md5:	8fe0c1943ebcb64f7547aa298ceb2136
 URL:		https://github.com/horde/horde/tree/master/framework/Mime_Viewer/
 BuildRequires:	php-channel(pear.horde.org)
 BuildRequires:	php-horde-Horde_Role
