@@ -2,7 +2,6 @@
 # - compress .js/.css
 %define		status		stable
 %define		pearname	Horde_Mime_Viewer
-%include	/usr/lib/rpm/macros.php
 Summary:	%{pearname} - Horde MIME Viewer Library
 Name:		php-horde-Horde_Mime_Viewer
 Version:	1.0.8
